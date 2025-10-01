@@ -1,0 +1,17 @@
+{
+  "name": "jenkinssupersecretskibidihouse",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "",
+  "type": "npm",
+  "main": "thefileofjenkins.js",
+  "scripts": {
+    "start": "node thefileofjenkins.js",
+    "dev": "nodemon thefileofjenkins.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Secret Society of Jenkins</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      #grid {
+        display: grid;
+        grid-template-columns: repeat(26, 40px);
+        grid-template-rows: repeat(31, 40px);
+        gap: 2px;
+        margin-bottom: 16px;
+      }
+      .cell {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #888;
+        background: #f9f9f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .draggable {
+        width: 30px;
+        height: 30px;
+        background: #ffd700;
+        border-radius: 6px;
+        cursor: grab;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the Secret Society of Jenkins</h1>
+    <h2>
+      Hearken, ye wayfarer of mortal coil, for thou shalt be assayed with
+      grievous burden and sore travail; thou shalt be set upon the anvil of
+      fate, there to be smitten and tempered by the hammer of tribulation. Thy
+      spirit shall be weighed in the balance of stern judgment, and thy sinews
+      stretched upon the rack of endurance, till every fibre of thy being
+      proclaim its steadfastness or else be found wanting. For not with gentle
+      hand shall destiny touch thee, nor with kindly whisper guide thy path;
+      nay, with tempest fierce and trial manifold shalt thou be encompassed
+      round, that the marrow of thy soul may be revealed. Verily, thou shalt be
+      tried with fire hotter than the furnaces of Gehenna, with waters more
+      tumultuous than the surging deeps of the stormy sea, with winds more
+      relentless than the gales that rend the oaks of the forest, till naught
+      remain save the purest essence of thy heart. Thus it is decreed: thou
+      shalt be rigorously proven, harshly examined, and most sternly tested,
+      till heaven and earth themselves bear witness to thy mettle.
+    </h2>
+    <h2>TLDR: FINISH THESE PUZZLES TO JOIN THE SOCIETY</h2>
+
+    <h3>Puzzle 1</h3>
+
+    <p>
+      The Secret Society of Jenkins Protects Its Society Hides Its True Colors
+    </p>
+    <p>Show your insignia by dragging the correct colors to the right spot</p>
+    <img src="https://www.jenkins.io/images/logos/pixelart/jenkins-pixelart-256.png" alt="puzzle1" />
+
+    <div id="grid"></div>
+    <div>
+      <div id="draggables">
+        <div class="draggable" draggable="true" id="drag1">A</div>
+        <div class="draggable" draggable="true" id="drag2">B</div>
+        <div class="draggable" draggable="true" id="drag3">C</div>
+      </div>
+    </div>
+    <div id="status"></div>
+
+    <script>
+      for (let i = 0; i < 806; i++) {
+        $("#grid").append(`<div class="cell" data-idx="${i}"></div>`);
+      }
+
+      // Drag and drop logic
+      let draggedId = null;
+
+      $(".draggable").on("dragstart", function (e) {
+        draggedId = $(this).attr("id");
+        e.originalEvent.dataTransfer.setData("text/plain", draggedId);
+      });
+
+      $(".cell").on("dragover", function (e) {
+        e.preventDefault();
+        $(this).css("background", "#e0e0ff");
+      });
+
+      $(".cell").on("dragleave", function () {
+        $(this).css("background", "#f9f9f9");
+      });
+
+      $(".cell").on("drop", function (e) {
+        e.preventDefault();
+        $(this).css("background", "#f9f9f9");
+        if (draggedId) {
+          let $dragged = $("#" + draggedId);
+          // Only allow one draggable per cell
+          if ($(this).children().length === 0) {
+            $(this).append($dragged);
+          }
+          draggedId = null;
+        }
+      });
+    </script>
+  </body>
+</html>
