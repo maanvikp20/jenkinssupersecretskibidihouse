@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Secret Society of Jenkins</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      #grid {
+        display: grid;
+        grid-template-columns: repeat(26, 40px);
+        grid-template-rows: repeat(31, 40px);
+        gap: 2px;
+        margin-bottom: 16px;
+      }
+      .cell {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #888;
+        background: #f9f9f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .draggable {
+        width: 30px;
+        height: 30px;
+        background: #ffd700;
+        border-radius: 6px;
+        cursor: grab;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the Secret Society of Jenkins</h1>
+    <h2>
+      Hearken, ye wayfarer of mortal coil, for thou shalt be assayed with
+      grievous burden and sore travail; thou shalt be set upon the anvil of
+      fate, there to be smitten and tempered by the hammer of tribulation. Thy
+      spirit shall be weighed in the balance of stern judgment, and thy sinews
+      stretched upon the rack of endurance, till every fibre of thy being
+      proclaim its steadfastness or else be found wanting. For not with gentle
+      hand shall destiny touch thee, nor with kindly whisper guide thy path;
+      nay, with tempest fierce and trial manifold shalt thou be encompassed
+      round, that the marrow of thy soul may be revealed. Verily, thou shalt be
+      tried with fire hotter than the furnaces of Gehenna, with waters more
+      tumultuous than the surging deeps of the stormy sea, with winds more
+      relentless than the gales that rend the oaks of the forest, till naught
+      remain save the purest essence of thy heart. Thus it is decreed: thou
+      shalt be rigorously proven, harshly examined, and most sternly tested,
+      till heaven and earth themselves bear witness to thy mettle.
+    </h2>
+    <h2>TLDR: FINISH THESE PUZZLES TO JOIN THE SOCIETY</h2>
+
+    <h3>Puzzle 1</h3>
+
+    <p>
+      The Secret Society of Jenkins Protects Its Society Hides Its True Colors
+    </p>
+    <p>Show your insignia by dragging the correct colors to the right spot</p>
+    <img src="https://www.jenkins.io/images/logos/pixelart/jenkins-pixelart-256.png" alt="puzzle1" />
+
+    <div id="grid"></div>
+    <div>
+      <div id="draggables">
+        <div class="draggable" draggable="true" id="drag1">A</div>
+        <div class="draggable" draggable="true" id="drag2">B</div>
+        <div class="draggable" draggable="true" id="drag3">C</div>
+      </div>
+    </div>
+    <div id="status"></div>
+
+    <script>
+      for (let i = 0; i < 806; i++) {
+        $("#grid").append(`<div class="cell" data-idx="${i}"></div>`);
+      }
+
+      // Drag and drop logic
+      let draggedId = null;
+
+      $(".draggable").on("dragstart", function (e) {
+        draggedId = $(this).attr("id");
+        e.originalEvent.dataTransfer.setData("text/plain", draggedId);
+      });
+
+      $(".cell").on("dragover", function (e) {
+        e.preventDefault();
+        $(this).css("background", "#e0e0ff");
+      });
+
+      $(".cell").on("dragleave", function () {
+        $(this).css("background", "#f9f9f9");
+      });
+
+      $(".cell").on("drop", function (e) {
+        e.preventDefault();
+        $(this).css("background", "#f9f9f9");
+        if (draggedId) {
+          let $dragged = $("#" + draggedId);
+          // Only allow one draggable per cell
+          if ($(this).children().length === 0) {
+            $(this).append($dragged);
+          }
+          draggedId = null;
+        }
+      });
+    </script>
+  </body>
+</html>
+
+
+      const solutionGrid = [
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 4, 4, 4, 4, 4, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 1, 1, 10, 4, 4, 5, 5, 5, 5, 5, 5, 1, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 1, 7, 10, 4, 5, 5, 5, 5, 5, 5, 5, 5, 4, 1, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 1, 1, 4, 5, 5, 4, 1, 5, 5, 5, 5, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 1, 7, 10, 10, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5, 5, 1, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 1, 1, 7, 10, 10, 5, 5, 5, 5, 1, 5, 5, 5, 5, 1, 5, 1, 1, 0, 0, 0, 0],
+      [0, 0, 0, 1, 2, 1, 10, 10, 10, 5, 5, 5, 4, 4, 1, 5, 5, 1, 4, 5, 1, 3, 1, 0, 0, 0],
+      [0, 0, 1, 2, 2, 3, 1, 1, 10, 5, 5, 5, 1, 1, 1, 5, 5, 1, 1, 5, 1, 3, 3, 1, 0, 0],
+      [0, 0, 1, 2, 3, 1, 4, 5, 10, 5, 5, 5, 5, 5, 5, 5, 4, 5, 1, 5, 1, 3, 3, 1, 0, 0],
+      [0, 1, 2, 2, 3, 1, 4, 10, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 5, 5, 1, 3, 3, 3, 1, 0],
+      [0, 1, 2, 3, 3, 1, 4, 5, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 3, 3, 3, 1, 0],
+      [1, 2, 2, 3, 3, 3, 1, 1, 4, 5, 5, 5, 5, 5, 1, 1, 5, 1, 5, 5, 1, 3, 3, 3, 3, 1],
+      [1, 2, 3, 3, 3, 3, 3, 1, 4, 5, 5, 4, 1, 5, 5, 5, 5, 5, 5, 1, 3, 3, 3, 3, 3, 1],
+      [1, 2, 3, 3, 3, 3, 3, 3, 1, 5, 5, 5, 5, 1, 1, 1, 1, 5, 5, 1, 3, 3, 3, 3, 3, 1],
+      [1, 2, 3, 3, 3, 3, 3, 3, 1, 5, 1, 5, 5, 5, 5, 5, 5, 5, 1, 3, 3, 3, 3, 3, 3, 1],
+      [1, 2, 3, 3, 3, 3, 1, 1, 9, 1, 5, 1, 5, 5, 5, 5, 5, 1, 9, 1, 1, 3, 3, 3, 3, 1],
+      [1, 2, 3, 3, 1, 1, 9, 9, 9, 9, 1, 6, 1, 1, 1, 1, 1, 1, 8, 8, 9, 1, 3, 3, 3, 1],
+      [0, 1, 3, 3, 1, 9, 9, 9, 8, 8, 8, 1, 2, 3, 3, 2, 2, 3, 1, 8, 8, 1, 3, 3, 1, 0],
+      [0, 1, 3, 3, 1, 9, 8, 8, 8, 8, 8, 1, 3, 3, 3, 1, 3, 3, 1, 8, 8, 1, 3, 3, 1, 0],
+      [0, 0, 1, 3, 1, 9, 8, 8, 1, 8, 8, 8, 1, 1, 1, 7, 1, 1, 1, 8, 1, 3, 3, 1, 0, 0],
+      [0, 0, 1, 2, 1, 9, 8, 8, 1, 9, 8, 8, 1, 11, 11, 6, 11, 1, 8, 8, 1, 3, 3, 1, 0, 0],
+      [0, 0, 0, 1, 3, 1, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+      [0, 0, 0, 0, 1, 1, 8, 9, 1, 6, 6, 6, 6, 6, 6, 7, 1, 9, 1, 7, 1, 6, 6, 1, 0, 0],
+      [0, 0, 0, 0, 0, 1, 8, 8, 1, 6, 6, 6, 6, 6, 6, 7, 1, 8, 1, 7, 1, 6, 7, 1, 0, 0],
+      [0, 0, 0, 0, 0, 1, 1, 8, 1, 6, 6, 6, 6, 6, 6, 7, 1, 8, 1, 1, 1, 1, 7, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 1, 1, 6, 6, 6, 6, 6, 6, 7, 1, 8, 1, 0, 1, 7, 7, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 6, 6, 6, 6, 6, 7, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 6, 6, 6, 6, 7, 1, 7, 1, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 6, 6, 6, 7, 7, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ];
+
+      // Flatten solutionGrid for easier comparison
+      const flatSolution = solutionGrid.flat();
+
+      // 0 and 6 are the same color (white), but 0 is default and does not count as a click
+      const colors = [
+      "#ffffff",     // 0: default/white
+      "#231f20",     // 1: black
+      "#ef3d3a",     // 2: secondary-red
+      "#d33833",     // 3: red
+      "#f7e4cd",     // 4: secondary-skin
+      "#f0d6b7",     // 5: skin
+      "#ffffff",     // 6: white (same as 0)
+      "#dcd9d8",     // 7: mughair-lightgrey
+      "#335061",     // 8: suit
+      "#49728b",     // 9: suit-secondary
+      "#6d6b6d",     // 10: hair-gray
+      "#81b0c4"      // 11: suit-lightblue
+      ];
+
+      let clicks = 0;
+      let locked = false;
+
+      // Load grid state from localStorage
+      let gridState = [];
+      if (localStorage.getItem("puzzle1Grid")) {
+      try {
+        gridState = JSON.parse(localStorage.getItem("puzzle1Grid"));
+      } catch {
+        gridState = [];
+      }
+      }
+
+      // Render grid
+      for (let i = 0; i < 806; i++) {
+      let colorIdx = gridState[i] || 0;
+      $("#grid").append(`<div class="cell" data-idx="${i}" data-color-idx="${colorIdx}" style="background:${colors[colorIdx]}"></div>`);
+      }
+
+      $("#status").text("Clicks: " + (localStorage.getItem("puzzle1Clicks") || 0));
+      clicks = parseInt(localStorage.getItem("puzzle1Clicks")) || 0;
+
+      // Check if already solved
+      function checkSolved() {
+      let correct = true;
+      $(".cell").each(function (i) {
+        let val = ($(this).data("color-idx") || 0);
+        // treat 0 and 6 as equivalent for solution
+        if ((flatSolution[i] === 0 && (val !== 0 && val !== 6)) ||
+          (flatSolution[i] === 6 && (val !== 0 && val !== 6)) ||
+          (flatSolution[i] !== 0 && flatSolution[i] !== 6 && val !== flatSolution[i])) {
+        correct = false;
+        return false;
+        }
+      });
+      if (correct) {
+        locked = true;
+        $("#status").text("Congratulations! You solved the puzzle.");
+      }
+      }
+      checkSolved();
+
+      $(".cell").on("click", function () {
+      if (locked) return;
+      let idx = $(this).data("idx");
+      let current = $(this).data("color-idx") || 0;
+      let next = (current + 1) % colors.length;
+
+      // Only increment clicks if not cycling to 0 (default)
+      if (next !== 0) {
+        clicks++;
+        localStorage.setItem("puzzle1Clicks", clicks);
+        $("#status").text(`Clicks: ${clicks}`);
+      } else {
+        // If cycling back to 0, do not increment clicks
+        $("#status").text(`Clicks: ${clicks}`);
+      }
+
+      $(this).css("background", colors[next]);
+      $(this).data("color-idx", next);
+
+      gridState[idx] = next;
+      localStorage.setItem("puzzle1Grid", JSON.stringify(gridState));
+
+      // Check if grid matches solution (treat 0 and 6 as equivalent)
+      let correct = true;
+      $(".cell").each(function (i) {
+        let val = ($(this).data("color-idx") || 0);
+        if ((flatSolution[i] === 0 && (val !== 0 && val !== 6)) ||
+          (flatSolution[i] === 6 && (val !== 0 && val !== 6)) ||
+          (flatSolution[i] !== 0 && flatSolution[i] !== 6 && val !== flatSolution[i])) {
+        correct = false;
+        return false;
+        }
+      });
+      if (correct) {
+        locked = true;
+        $("#status").text("Congratulations! You solved the puzzle.");
+      }
+      });
+    
