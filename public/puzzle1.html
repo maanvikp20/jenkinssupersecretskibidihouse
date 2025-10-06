@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Secret Society of Jenkins</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <style>
       #grid {
         display: grid;
@@ -456,7 +457,8 @@
           localStorage.setItem("puzzle1SolvedTime", endTime);
           $("#status").text(
             "Congratulations! You solved the puzzle in " +
-              formatTime(endTime - startTime)
+              formatTime(endTime - startTime) +
+              ". The code is 'jenkinslogo'"
           );
         }
       }
