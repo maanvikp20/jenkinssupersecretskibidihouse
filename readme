@@ -1,6 +1,55 @@
+# The Secret Society of Jenkins 🔐
+
+An interactive puzzle game featuring 7 challenging enigmas to solve.
+
+## Getting Started
+
+### Installation
+```bash
 npm install
+```
 
+### Running the Game
+```bash
 npm run dev
-npm run start
+# or
+npm start
+```
 
-fin
+## Puzzles Overview
+
+The game contains 7 unique puzzles that test your logic, math, and problem-solving skills:
+
+1. **The Mathematical Enigma** - Solve symbol equations
+2. **Puzzle 2** - Mathematical challenge
+3. **Puzzle 3** - Directional puzzle
+4. **Puzzle 4** - Number mystery
+5. **Puzzle 5** - Hidden secret
+6. **Puzzle 6** - Complex calculation
+7. **Puzzle 7** - Final revelation
+
+## Answers (Spoilers!)
+
+<details>
+<summary>Click to reveal answers</summary>
+
+- **Puzzle 1:** symbols13
+- **Puzzle 2:** 36
+- **Puzzle 3:** david
+- **Puzzle 4:** 67
+- **Puzzle 5:** something
+- **Puzzle 6:** 499200
+- **Puzzle 7:** end
+
+</details>
+
+## Features
+
+- ⏱️ Built-in timer to track your solving speed
+- 💡 Helpful hints for each puzzle
+- 🎨 Dark themed interface
+- ✨ Interactive gameplay
+
+---
+
+Good luck, puzzle solver! 🧩

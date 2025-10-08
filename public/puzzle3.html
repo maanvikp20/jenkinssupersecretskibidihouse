@@ -1,24 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-  </head>
-  <body>
-    <h3>Puzzle 3</h3>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Puzzle 3 - The Riddle</title>
+</head>
+<body>
+    <h3>Puzzle 3: The Riddle of Names</h3>
+    
+    <div class="timer" id="timer">Time: 0:00</div>
+
     <p>
       One must needs know the storied past of the founders of our most
       clandestine order — the hallowed Jenkins Secret Society. Yet, to prove thy
       wit and earn passage deeper within, thou must first answer this riddle
       most cunning.
     </p>
+    
     <p>Lo, the question be thus:</p>
-    <p>David’s sire hath three sons — Snap, Crackle, and _____?</p>
+    
+    <div class="direction-key">
+        <p style="text-align: center; font-size: 1.4em; color: #f7e4cd;">
+            <strong>David's sire hath three sons — Snap, Crackle, and _____?</strong>
+        </p>
+    </div>
+    
     <p>
       Think well, traveler, for the answer lieth not in the noise of names, but
       in the quiet truth before thine eyes.
     </p>
-  </body>
+
+    <div class="hint-box">
+        💡 <strong>Hint:</strong> Read the question carefully. The answer is already mentioned in the riddle itself.
+    </div>
+
+    <p style="text-align: center; color: #dcd9d8; margin-top: 30px;">
+        What is the name of the third son?
+    </p>
+
+    <input type="text" id="answer-input" placeholder="Enter your answer...">
+    <button id="submit-btn">Submit Answer</button>
+
+    <div id="status"></div>
+
+    <script>
+        const solution = "david";
+        let startTime = Date.now();
+        let solved = false;
+
+        function formatTime(ms) {
+            let sec = Math.floor(ms / 1000);
+            let min = Math.floor(sec / 60);
+            sec = sec % 60;
+            return `${min}:${sec.toString().padStart(2, '0')}`;
+        }
+
+        function updateTimer() {
+            if (!solved) {
+                $('#timer').text('Time: ' + formatTime(Date.now() - startTime));
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+
+        $('#submit-btn').on('click', function() {
+            if (solved) return;
+            
+            const answer = $('#answer-input').val().trim().toLowerCase();
+            const statusDiv = $('#status');
+            
+            if (answer === solution) {
+                solved = true;
+                const endTime = Date.now();
+                const timeSpent = formatTime(endTime - startTime);
+                
+                statusDiv.removeClass('error').addClass('success');
+                statusDiv.html(`
+                    🎉 Congratulations! You've solved the riddle in ${timeSpent}!<br>
+                    <strong>Correct!</strong> David's father has three sons: Snap, Crackle, and David.<br>
+                    <strong>Your code is: davidsfather</strong>
+                `);
+                
+                $('#answer-input').prop('disabled', true);
+                $('#submit-btn').prop('disabled', true);
+            } else {
+                statusDiv.removeClass('success').addClass('error');
+                statusDiv.text('❌ Incorrect. Read the riddle more carefully.');
+                
+                setTimeout(() => {
+                    statusDiv.removeClass('error');
+                    statusDiv.text('');
+                }, 3000);
+            }
+        });
+
+        $('#answer-input').on('keypress', function(e) {
+            if (e.which === 13) {
+                $('#submit-btn').click();
+            }
+        });
+    </script>
+</body>
 </html>

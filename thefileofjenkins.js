@@ -12,7 +12,7 @@ app.get("/puzzle1", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "puzzle1.html"));
 });
 
-app.get("/jenkinslogo", (req, res) => {
+app.get("/symbols13", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "puzzle2.html"));
 });
 
@@ -20,7 +20,7 @@ app.get("/36", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "puzzle3.html"));
 });
 
-app.get("/david", (req, res) => {
+app.get("/davidsfather", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "puzzle4.html"));
 });
 

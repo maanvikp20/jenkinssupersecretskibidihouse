@@ -1,467 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Secret Society of Jenkins</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <style>
-      #grid {
-        display: grid;
-        grid-template-columns: repeat(26, 40px);
-        grid-template-rows: repeat(31, 40px);
-        margin-bottom: 16px;
-      }
-      .cell {
-        width: 40px;
-        height: 40px;
-        border: 1px solid #888;
-        background: #f9f9f9;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Welcome to the Secret Society of Jenkins</h1>
-    <h2>
-      Hearken, ye wayfarer of mortal coil, for thou shalt be assayed with
-      grievous burden and sore travail; thou shalt be set upon the anvil of
-      fate, there to be smitten and tempered by the hammer of tribulation. Thy
-      spirit shall be weighed in the balance of stern judgment, and thy sinews
-      stretched upon the rack of endurance, till every fibre of thy being
-      proclaim its steadfastness or else be found wanting. For not with gentle
-      hand shall destiny touch thee, nor with kindly whisper guide thy path;
-      nay, with tempest fierce and trial manifold shalt thou be encompassed
-      round, that the marrow of thy soul may be revealed. Verily, thou shalt be
-      tried with fire hotter than the furnaces of Gehenna, with waters more
-      tumultuous than the surging deeps of the stormy sea, with winds more
-      relentless than the gales that rend the oaks of the forest, till naught
-      remain save the purest essence of thy heart. Thus it is decreed: thou
-      shalt be rigorously proven, harshly examined, and most sternly tested,
-      till heaven and earth themselves bear witness to thy mettle.
-    </h2>
-    <h2>TLDR: FINISH THESE PUZZLES TO JOIN THE SOCIETY</h2>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Secret Society of Jenkins</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>The Secret Society of Jenkins</h1>
+    <h2>Puzzle 1: The Mathematical Enigma</h2>
+    <div class="timer" id="timer">Time: 0:00</div>
+  </header>
 
-    <h3>Puzzle 1</h3>
-
-    <p>
-      The Secret Society of Jenkins Protects Its Society Hides Its True Colors
-    </p>
-    <p>Show your insignia by dragging the correct colors to the right spot</p>
-    <img
-      src="https://www.jenkins.io/images/logos/pixelart/jenkins-pixelart-256.png"
-      alt="puzzle1"
-    />
-
-    <div id="grid"></div>
-
-    <div id="status"></div>
-
-    <!-- Color palette for dragging -->
-    <div id="palette" style="margin-bottom: 16px">
-      <span>Choose a color and drag to paint:</span>
-      <div style="display: flex; gap: 8px; margin-top: 8px">
-        <!-- Render color swatches except index 0 (default) -->
-        <div
-          class="color-swatch"
-          data-color-idx="1"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #231f20;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
-        <div
-          class="color-swatch"
-          data-color-idx="2"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #ef3d3a;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
-        <div
-          class="color-swatch"
-          data-color-idx="3"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #d33833;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
-        <div
-          class="color-swatch"
-          data-color-idx="4"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #f7e4cd;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
-        <div
-          class="color-swatch"
-          data-color-idx="5"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #f0d6b7;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
-        <div
-          class="color-swatch"
-          data-color-idx="6"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #ffffff;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
-        <div
-          class="color-swatch"
-          data-color-idx="7"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #dcd9d8;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
-        <div
-          class="color-swatch"
-          data-color-idx="8"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #335061;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
-        <div
-          class="color-swatch"
-          data-color-idx="9"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #49728b;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
-        <div
-          class="color-swatch"
-          data-color-idx="10"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #6d6b6d;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
-        <div
-          class="color-swatch"
-          data-color-idx="11"
-          style="
-            width: 32px;
-            height: 32px;
-            background: #81b0c4;
-            border: 2px solid #888;
-            cursor: grab;
-          "
-          draggable="true"
-        ></div>
+  <main>
+    <section class="puzzle-section">
+      <div class="puzzle-grid">
+        <div class="equation-box">🔥 + 🔥 + 🔥 = 15</div>
+        <div class="equation-box">⚡ + ⚡ + 🔥 = 13</div>
+        <div class="equation-box">💎 × 🔥 = 20</div>
+        <div class="equation-box">🔥 - ⚡ = 1</div>
+        <div class="equation-box">💎 + ⚡ = 8</div>
+        <div class="equation-box">⚡ × 💎 = 16</div>
+        <div class="equation-box final-equation">🔥 + ⚡ + 💎 = ?</div>
       </div>
-    </div>
 
-    <script>
-      const solutionGrid = [
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 4, 4, 4, 4, 4, 1, 1, 0, 0, 0, 0, 0,
-          0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 1, 1, 10, 4, 4, 5, 5, 5, 5, 5, 5, 1, 0, 0, 0, 0,
-          0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 1, 7, 10, 4, 5, 5, 5, 5, 5, 5, 5, 5, 4, 1, 0, 0, 0,
-          0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 1, 1, 4, 5, 5, 4, 1, 5, 5, 5, 5, 1, 1, 1, 0, 0, 0,
-          0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 1, 7, 10, 10, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5, 5, 1, 0, 0,
-          0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 1, 1, 7, 10, 10, 5, 5, 5, 5, 1, 5, 5, 5, 5, 1, 5, 1, 1, 0,
-          0, 0, 0,
-        ],
-        [
-          0, 0, 0, 1, 2, 1, 10, 10, 10, 5, 5, 5, 4, 4, 1, 5, 5, 1, 4, 5, 1, 3,
-          1, 0, 0, 0,
-        ],
-        [
-          0, 0, 1, 2, 2, 3, 1, 1, 10, 5, 5, 5, 1, 1, 1, 5, 5, 1, 1, 5, 1, 3, 3,
-          1, 0, 0,
-        ],
-        [
-          0, 0, 1, 2, 3, 1, 4, 5, 10, 5, 5, 5, 5, 5, 5, 5, 4, 5, 1, 5, 1, 3, 3,
-          1, 0, 0,
-        ],
-        [
-          0, 1, 2, 2, 3, 1, 4, 10, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 5, 5, 1, 3, 3,
-          3, 1, 0,
-        ],
-        [
-          0, 1, 2, 3, 3, 1, 4, 5, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 3, 3,
-          3, 1, 0,
-        ],
-        [
-          1, 2, 2, 3, 3, 3, 1, 1, 4, 5, 5, 5, 5, 5, 1, 1, 5, 1, 5, 5, 1, 3, 3,
-          3, 3, 1,
-        ],
-        [
-          1, 2, 3, 3, 3, 3, 3, 1, 4, 5, 5, 4, 1, 5, 5, 5, 5, 5, 5, 1, 3, 3, 3,
-          3, 3, 1,
-        ],
-        [
-          1, 2, 3, 3, 3, 3, 3, 3, 1, 5, 5, 5, 5, 1, 1, 1, 1, 5, 5, 1, 3, 3, 3,
-          3, 3, 1,
-        ],
-        [
-          1, 2, 3, 3, 3, 3, 3, 3, 1, 5, 1, 5, 5, 5, 5, 5, 5, 5, 1, 3, 3, 3, 3,
-          3, 3, 1,
-        ],
-        [
-          1, 2, 3, 3, 3, 3, 1, 1, 9, 1, 5, 1, 5, 5, 5, 5, 5, 1, 9, 1, 1, 3, 3,
-          3, 3, 1,
-        ],
-        [
-          1, 2, 3, 3, 1, 1, 9, 9, 9, 9, 1, 6, 1, 1, 1, 1, 1, 1, 8, 8, 9, 1, 3,
-          3, 3, 1,
-        ],
-        [
-          0, 1, 3, 3, 1, 9, 9, 9, 8, 8, 8, 1, 2, 3, 3, 2, 2, 3, 1, 8, 8, 1, 3,
-          3, 1, 0,
-        ],
-        [
-          0, 1, 3, 3, 1, 9, 8, 8, 8, 8, 8, 1, 3, 3, 3, 1, 3, 3, 1, 8, 8, 1, 3,
-          3, 1, 0,
-        ],
-        [
-          0, 0, 1, 3, 1, 9, 8, 8, 1, 8, 8, 8, 1, 1, 1, 7, 1, 1, 1, 8, 1, 3, 3,
-          1, 0, 0,
-        ],
-        [
-          0, 0, 1, 2, 1, 9, 8, 8, 1, 9, 8, 8, 1, 11, 11, 6, 11, 1, 8, 8, 1, 3,
-          3, 1, 0, 0,
-        ],
-        [
-          0, 0, 0, 1, 3, 1, 8, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-          0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 1, 1, 8, 9, 1, 6, 6, 6, 6, 6, 6, 7, 1, 9, 1, 7, 1, 6, 6,
-          1, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 1, 8, 8, 1, 6, 6, 6, 6, 6, 6, 7, 1, 8, 1, 7, 1, 6, 7,
-          1, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 1, 1, 8, 1, 6, 6, 6, 6, 6, 6, 7, 1, 8, 1, 1, 1, 1, 7,
-          1, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 1, 1, 6, 6, 6, 6, 6, 6, 7, 1, 8, 1, 0, 1, 7, 7,
-          1, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 6, 6, 6, 6, 6, 7, 1, 1, 1, 0, 0, 1, 1,
-          1, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 6, 6, 6, 6, 7, 1, 7, 1, 0, 0, 0, 0,
-          0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 6, 6, 6, 7, 7, 1, 1, 1, 0, 0, 0, 0,
-          0, 0, 0,
-        ],
-        [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
-          0, 0, 0,
-        ],
-      ];
-      const flatSolution = solutionGrid.flat();
-      const colors = [
-        "#ffffff",
-        "#231f20",
-        "#ef3d3a",
-        "#d33833",
-        "#f7e4cd",
-        "#f0d6b7",
-        "#ffffff",
-        "#dcd9d8",
-        "#335061",
-        "#49728b",
-        "#6d6b6d",
-        "#81b0c4",
-      ];
-      let locked = false;
-      let gridState = [];
-      if (localStorage.getItem("puzzle1Grid")) {
-        try {
-          gridState = JSON.parse(localStorage.getItem("puzzle1Grid"));
-        } catch {
-          gridState = [];
-        }
-      }
+      <div class="hint-box">
+        💡 <strong>Hint:</strong> Solve each symbol and add them to find the final answer.
+      </div>
 
-      // Timer logic
-      let startTime = localStorage.getItem("puzzle1StartTime");
-      let solvedTime = localStorage.getItem("puzzle1SolvedTime");
-      if (!startTime || solvedTime) {
-        startTime = Date.now();
-        localStorage.setItem("puzzle1StartTime", startTime);
-        localStorage.removeItem("puzzle1SolvedTime");
-      }
+      <div class="input-section">
+        <input type="number" id="answer-input" placeholder="Enter your answer...">
+        <button id="submit-btn">Submit Answer</button>
+      </div>
 
-      function formatTime(ms) {
-        let sec = Math.floor(ms / 1000);
-        let min = Math.floor(sec / 60);
-        sec = sec % 60;
-        return `${min}:${sec.toString().padStart(2, "0")}`;
-      }
+      <div id="status"></div>
+    </section>
+  </main>
 
-      function updateTimer() {
-        if (locked) return;
-        let now = Date.now();
-        let elapsed = now - startTime;
-        $("#status").text("Time: " + formatTime(elapsed));
-      }
+  <script>
+    const solution = 13;
+    let startTime = Date.now();
+    let solved = false;
 
-      // Render grid
-      for (let i = 0; i < 806; i++) {
-        let colorIdx = gridState[i] || 0;
-        $("#grid").append(
-          `<div class="cell" data-idx="${i}" data-color-idx="${colorIdx}" style="background:${colors[colorIdx]}" draggable="false"></div>`
-        );
-      }
+    function formatTime(ms) {
+      let sec = Math.floor(ms / 1000);
+      let min = Math.floor(sec / 60);
+      sec = sec % 60;
+      return `${min}:${sec.toString().padStart(2,"0")}`;
+    }
 
-      // Timer interval
-      if (!solvedTime) {
-        setInterval(updateTimer, 1000);
-        updateTimer();
+    function updateTimer() {
+      if (!solved) $("#timer").text("Time: " + formatTime(Date.now() - startTime));
+    }
+
+    setInterval(updateTimer, 1000);
+
+    $("#submit-btn").on("click", function() {
+      if (solved) return;
+      const answer = parseInt($("#answer-input").val());
+      const statusDiv = $("#status");
+
+      if (answer === solution) {
+        solved = true;
+        const endTime = Date.now();
+        statusDiv.removeClass("error").addClass("success");
+        statusDiv.html(`🎉 Correct! Puzzle solved in ${formatTime(endTime-startTime)}<br>
+          🔥 = 5, ⚡ = 4, 💎 = 4<br>
+          <strong>Your code is: symbols13</strong>`);
+        $("#answer-input, #submit-btn").prop("disabled", true);
       } else {
-        $("#status").text("Solved in: " + formatTime(solvedTime - startTime));
-        locked = true;
+        statusDiv.removeClass("success").addClass("error");
+        statusDiv.text("❌ Incorrect. Try again.");
+        setTimeout(() => statusDiv.removeClass("error").text(""), 3000);
       }
+    });
 
-      // Drag & drop painting
-      let dragColorIdx = null;
-      $(".color-swatch").on("dragstart", function (e) {
-        dragColorIdx = $(this).data("color-idx");
-        e.originalEvent.dataTransfer.setData("color-idx", dragColorIdx);
-      });
-
-      $(".cell").on("dragover", function (e) {
-        if (locked) return;
-        e.preventDefault();
-      });
-
-      $(".cell").on("drop", function (e) {
-        if (locked) return;
-        e.preventDefault();
-        let idx = $(this).data("idx");
-        let colorIdx = dragColorIdx;
-        $(this).css("background", colors[colorIdx]);
-        $(this).data("color-idx", colorIdx);
-        gridState[idx] = colorIdx;
-        localStorage.setItem("puzzle1Grid", JSON.stringify(gridState));
-        checkSolved();
-      });
-
-      // Allow click to paint as well
-      $(".cell").on("click", function () {
-        if (locked || dragColorIdx === null) return;
-        let idx = $(this).data("idx");
-        let colorIdx = dragColorIdx;
-        $(this).css("background", colors[colorIdx]);
-        $(this).data("color-idx", colorIdx);
-        gridState[idx] = colorIdx;
-        localStorage.setItem("puzzle1Grid", JSON.stringify(gridState));
-        checkSolved();
-      });
-
-      // Palette click to select color
-      $(".color-swatch").on("click", function () {
-        $(".color-swatch").css("border", "2px solid #888");
-        $(this).css("border", "4px solid #333");
-        dragColorIdx = $(this).data("color-idx");
-      });
-
-      // Solution check
-      function checkSolved() {
-        let correct = true;
-        $(".cell").each(function (i) {
-          let val = $(this).data("color-idx") || 0;
-          if (
-            (flatSolution[i] === 0 && val !== 0 && val !== 6) ||
-            (flatSolution[i] === 6 && val !== 0 && val !== 6) ||
-            (flatSolution[i] !== 0 &&
-              flatSolution[i] !== 6 &&
-              val !== flatSolution[i])
-          ) {
-            correct = false;
-            return false;
-          }
-        });
-        if (correct) {
-          locked = true;
-          let endTime = Date.now();
-          localStorage.setItem("puzzle1SolvedTime", endTime);
-          $("#status").text(
-            "Congratulations! You solved the puzzle in " +
-              formatTime(endTime - startTime) +
-              ". The code is 'jenkinslogo'"
-          );
-        }
-      }
-    </script>
-  </body>
+    $("#answer-input").on("keypress", function(e) {
+      if (e.which === 13) $("#submit-btn").click();
+    });
+  </script>
+</body>
 </html>
